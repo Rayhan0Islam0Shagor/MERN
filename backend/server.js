@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
 const connectDB = require('./config/db');
-const { errorHandler } = require('./middleware/middleware');
+const { errorHandler } = require('./middleware/errorMiddleware');
 
 // db
 connectDB();
@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 // error handler
 app.use(errorHandler);
